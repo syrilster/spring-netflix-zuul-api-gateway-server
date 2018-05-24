@@ -1,1 +1,5 @@
-# spring-netflix-zuul-api-gateway-server
+# API Gateways (Netflix Zuul)
+* Authentication, Authorization and security
+* Rate Limits.
+* Fault Tolerance.
+* Service Aggregation.
