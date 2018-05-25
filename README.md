@@ -5,3 +5,4 @@
 * Fault Tolerance.
 * Service Aggregation.
 * Since all requests go via an API gateway, this is a great place for debugging and Analytics.
+* Enabled using Annotation @EnableZuulProxy
