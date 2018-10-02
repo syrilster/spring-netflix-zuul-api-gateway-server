@@ -1,20 +1,23 @@
 package com.springboot.microservices.netflixzuulapigatewayserver.model;
 
 public class ApplicationUser {
-    private String userName;
+    private String username;
     private String password;
 
-    public ApplicationUser(String userName, String password) {
-        this.userName = userName;
+    public ApplicationUser() {
+    }
+
+    public ApplicationUser(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
