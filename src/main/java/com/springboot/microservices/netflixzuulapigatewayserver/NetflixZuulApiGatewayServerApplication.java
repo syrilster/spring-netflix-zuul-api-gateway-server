@@ -20,4 +20,14 @@ public class NetflixZuulApiGatewayServerApplication {
     public Sampler defaultSampler() {
         return Sampler.ALWAYS_SAMPLE;
     }
+
+    /*@Configuration
+    protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http.cors().and().csrf().disable().authorizeRequests()
+                    .antMatchers("/*currency-converter/**").hasRole("User")
+                    .antMatchers("/*currency-converter/**").hasRole("Admin");
+        }
+    }*/
 }
