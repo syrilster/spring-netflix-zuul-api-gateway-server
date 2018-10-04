@@ -1,6 +1,7 @@
 package com.springboot.microservices.netflixzuulapigatewayserver.security;
 
 import com.springboot.microservices.netflixzuulapigatewayserver.JwtConfig;
+import com.springboot.microservices.netflixzuulapigatewayserver.exception.JwtAuthenticationEntryPoint;
 import com.springboot.microservices.netflixzuulapigatewayserver.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private JwtConfig jwtConfig;
 
     @Autowired
+    private
+    JwtAuthenticationEntryPoint unauthorizedHandler;
+
+    @Autowired
     public SecurityConfiguration(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
     }
@@ -26,6 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+                .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 // Add a filter to validate the tokens with every request
                 .addFilterBefore(new JWTAuthorizationFilter(authenticationManager(), customUserDetailsService),
@@ -42,6 +49,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public JwtConfig jwtConfig() {
         return new JwtConfig();
+    }
+
+    @Bean
+    public JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint(){
+        return new JwtAuthenticationEntryPoint();
     }
 
     /*@Bean
