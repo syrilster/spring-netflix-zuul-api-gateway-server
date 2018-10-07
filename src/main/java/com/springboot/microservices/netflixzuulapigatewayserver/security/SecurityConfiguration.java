@@ -55,9 +55,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint(){
         return new JwtAuthenticationEntryPoint();
     }
-
-    /*@Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }*/
 }
